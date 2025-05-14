@@ -1,0 +1,14 @@
+# ClickSorte Robots.txt
+User-agent: *
+Allow: /
+Allow: /pages/
+Allow: /css/
+Allow: /js/
+Allow: /img/
+
+# Caminho para o sitemap
+Sitemap: https://clicksorte.com.br/sitemap.xml
+
+# Desabilitar indexação de páginas duplicadas ou desnecessárias
+Disallow: /js/*.js$
+Disallow: /css/*.css$ 

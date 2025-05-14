@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre o ClickSorte - Sorteios Online</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .about-section {
+            line-height: 1.6;
+        }
+        
+        .feature-list {
+            margin: 20px 0;
+            padding-left: 20px;
+        }
+        
+        .feature-list li {
+            margin-bottom: 10px;
+        }
+        
+        .feature-list i {
+            color: var(--accent-color);
+            margin-right: 10px;
+        }
+        
+        .back-btn {
+            margin-top: 30px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-random"></i>
+                <h1>ClickSorte</h1>
+            </div>
+            <div class="theme-toggle">
+                <button id="theme-toggle-btn">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </header>
+
+        <main>
+            <section class="about-section">
+                <h2>Sobre o ClickSorte</h2>
+                
+                <p>
+                    O ClickSorte é um aplicativo web moderno e intuitivo para realizar sorteios de forma 
+                    dinâmica e divertida. Foi desenvolvido para facilitar a realização de sorteios em diferentes 
+                    contextos, como eventos, brincadeiras, decisões aleatórias ou qualquer situação onde 
+                    um sorteio justo seja necessário.
+                </p>
+                
+                <h3>Recursos Principais</h3>
+                <ul class="feature-list">
+                    <li><i class="fas fa-check-circle"></i> <strong>Interface Amigável:</strong> Design moderno e intuitivo, fácil de usar em qualquer dispositivo.</li>
+                    <li><i class="fas fa-check-circle"></i> <strong>Sorteios Animados:</strong> Efeitos visuais de suspense durante o sorteio para criar expectativa.</li>
+                    <li><i class="fas fa-check-circle"></i> <strong>Validação de Entradas:</strong> Validação automática para evitar itens repetidos ou vazios.</li>
+                    <li><i class="fas fa-check-circle"></i> <strong>Compartilhamento:</strong> Opções para compartilhar o resultado do sorteio como texto ou imagem.</li>
+                    <li><i class="fas fa-check-circle"></i> <strong>Histórico:</strong> Armazenamento local dos últimos sorteios realizados.</li>
+                    <li><i class="fas fa-check-circle"></i> <strong>Modo Escuro:</strong> Opção de tema escuro para uso em ambientes com pouca luz.</li>
+                </ul>
+                
+                <h3>Como Usar</h3>
+                <p>
+                    Usar o ClickSorte é muito simples:
+                </p>
+                <ol>
+                    <li>Digite ou cole sua lista de itens na área de texto (um por linha).</li>
+                    <li>Clique em "Adicionar" para incluir os itens no sorteio.</li>
+                    <li>Quando estiver pronto, clique no botão "Sortear".</li>
+                    <li>Aprecie a animação do sorteio e veja o resultado.</li>
+                    <li>Compartilhe o resultado ou realize um novo sorteio!</li>
+                </ol>
+                
+                <h3>Privacidade e Armazenamento</h3>
+                <p>
+                    O ClickSorte utiliza apenas o armazenamento local do seu navegador (localStorage) 
+                    para salvar os itens de sorteio e o histórico. Nenhum dado é enviado para servidores 
+                    externos, garantindo total privacidade. Os dados ficam armazenados apenas no seu 
+                    dispositivo.
+                </p>
+                
+                <a href="../index.html" class="btn primary-btn back-btn">
+                    <i class="fas fa-arrow-left"></i> Voltar ao ClickSorte
+                </a>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2023 ClickSorte - Todos os direitos reservados</p>
+        </footer>
+    </div>
+
+    <script>
+        // Script simplificado apenas para o tema escuro/claro
+        document.addEventListener('DOMContentLoaded', () => {
+            const themeToggleBtn = document.getElementById('theme-toggle-btn');
+            
+            // Verificar tema salvo
+            const savedTheme = localStorage.getItem('clicksorte-theme');
+            if (savedTheme === 'dark') {
+                document.body.setAttribute('data-theme', 'dark');
+                themeToggleBtn.innerHTML = '<i class="fas fa-sun"></i>';
+            }
+            
+            // Alternar tema
+            themeToggleBtn.addEventListener('click', () => {
+                if (document.body.getAttribute('data-theme') === 'dark') {
+                    document.body.removeAttribute('data-theme');
+                    themeToggleBtn.innerHTML = '<i class="fas fa-moon"></i>';
+                    localStorage.setItem('clicksorte-theme', 'light');
+                } else {
+                    document.body.setAttribute('data-theme', 'dark');
+                    themeToggleBtn.innerHTML = '<i class="fas fa-sun"></i>';
+                    localStorage.setItem('clicksorte-theme', 'dark');
+                }
+            });
+        });
+    </script>
+</body>
+</html> 

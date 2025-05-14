@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClickSorte - Sorteios Online Gratuitos e Aleatórios</title>
+    
+    <!-- Meta tags para SEO -->
+    <meta name="description" content="ClickSorte: a maneira mais fácil de realizar sorteios online aleatórios. Crie roletas personalizadas, sorteie nomes ou números com animação e compartilhe os resultados.">
+    <meta name="keywords" content="sorteio online, roleta online, aplicativo de sorteio, sorteio aleatório, gerador de números, sorteio de nomes">
+    <meta name="author" content="ClickSorte">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://clicksorte.com.br/">
+    
+    <!-- Prevenção de conteúdo duplicado em diferentes protocolos -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- Open Graph para compartilhamento em redes sociais -->
+    <meta property="og:title" content="ClickSorte - Sorteios Online Gratuitos">
+    <meta property="og:description" content="Realize sorteios online de forma rápida e fácil. Ideal para promoções, grupos e decisões aleatórias.">
+    <meta property="og:image" content="./img/clicksorte-og.jpg">
+    <meta property="og:url" content="https://clicksorte.com.br/">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="ClickSorte - Sorteios Online Gratuitos">
+    <meta name="twitter:description" content="Realize sorteios online de forma rápida e fácil. Ideal para promoções, grupos e decisões aleatórias.">
+    <meta name="twitter:image" content="./img/clicksorte-og.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="./img/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="./img/apple-touch-icon.png">
+    
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- JSON-LD para Rich Snippets -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "ClickSorte",
+      "description": "Aplicativo web para realizar sorteios online aleatórios de forma rápida e divertida.",
+      "url": "https://clicksorte.com.br",
+      "applicationCategory": "Utility",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "BRL"
+      },
+      "featureList": [
+        "Sorteios aleatórios",
+        "Roleta interativa",
+        "Compartilhamento de resultados",
+        "Histórico de sorteios"
+      ]
+    }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo" itemscope itemtype="https://schema.org/Organization">
+                <i class="fas fa-random" aria-hidden="true"></i>
+                <h1 itemprop="name">ClickSorte</h1>
+                <meta itemprop="logo" content="./img/clicksorte-logo.png">
+            </div>
+            <div class="theme-toggle">
+                <button id="theme-toggle-btn" aria-label="Alternar modo escuro">
+                    <i class="fas fa-moon" aria-hidden="true"></i>
+                </button>
+            </div>
+        </header>
+
+        <main itemscope itemtype="https://schema.org/WebApplication">
+            <div class="main-layout">
+                <!-- Coluna da Esquerda - Roleta -->
+                <div class="left-column">
+                    <section class="wheel-section" id="wheel-section">
+                        <h2>Roleta de Sorteio</h2>
+                        <div class="wheel-container">
+                            <canvas id="wheel-canvas" width="380" height="380" aria-label="Roleta para sorteio" role="img"></canvas>
+                            <div class="wheel-pointer">
+                                <i class="fas fa-long-arrow-alt-down" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                        <button id="spin-wheel-btn" class="btn accent-btn">
+                            <i class="fas fa-play" aria-hidden="true"></i> Girar Roleta
+                        </button>
+                    </section>
+
+                    <section class="result-section hidden" id="result-section">
+                        <div class="result-container">
+                            <h2>Item sorteado</h2>
+                            <div class="result" id="result">
+                                <div id="result-text" aria-live="polite"></div>
+                                <div class="confetti" aria-hidden="true"></div>
+                            </div>
+                            <div class="result-actions">
+                                <button id="share-btn" class="btn secondary-btn">
+                                    <i class="fas fa-share-alt" aria-hidden="true"></i> Compartilhar
+                                </button>
+                                <button id="new-lottery-btn" class="btn primary-btn">
+                                    <i class="fas fa-redo" aria-hidden="true"></i> Novo Sorteio
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Coluna da Direita - Formulário e Lista -->
+                <div class="right-column">
+                    <section class="input-section">
+                        <h2>Adicione itens para o sorteio</h2>
+                        <div class="input-container">
+                            <textarea id="items-input" placeholder="Digite nomes, números ou itens (um por linha)" aria-label="Itens para sorteio"></textarea>
+                            <button id="add-items-btn" class="btn primary-btn">
+                                <i class="fas fa-plus" aria-hidden="true"></i> Adicionar
+                            </button>
+                        </div>
+                        <div class="options-container">
+                            <div class="option-item">
+                                <label class="switch-label">
+                                    <span>Permitir itens repetidos no sorteio</span>
+                                    <div class="toggle-switch">
+                                        <input type="checkbox" id="allow-repeat-switch" checked>
+                                        <span class="slider"></span>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="items-list-section">
+                        <h2>Itens no sorteio</h2>
+                        <ul id="items-list" aria-live="polite"></ul>
+                        <div class="items-count">
+                            <span id="items-count">0</span> itens adicionados
+                        </div>
+                        <div class="draw-options">
+                            <button id="draw-btn" class="btn accent-btn" disabled>
+                                <i class="fas fa-dice" aria-hidden="true"></i> Sortear
+                            </button>
+                            <button id="wheel-btn" class="btn secondary-btn" disabled>
+                                <i class="fas fa-circle-notch" aria-hidden="true"></i> Usar Roleta
+                            </button>
+                        </div>
+                    </section>
+
+                    <section class="history-section">
+                        <h2>Histórico</h2>
+                        <div class="history-list" id="history-list" aria-live="polite">
+                            <p class="empty-history">Nenhum sorteio realizado ainda.</p>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <nav>
+                <a href="./pages/about.html">Sobre o ClickSorte</a>
+                <a href="./pages/termos.html">Termos de Uso</a>
+                <a href="./pages/privacidade.html">Política de Privacidade</a>
+            </nav>
+            <p>&copy; <span id="current-year">2023</span> ClickSorte - Todos os direitos reservados</p>
+        </footer>
+    </div>
+
+    <div class="share-modal" id="share-modal" aria-hidden="true">
+        <div class="modal-content" role="dialog" aria-labelledby="share-title">
+            <span class="close-modal" aria-label="Fechar">&times;</span>
+            <h2 id="share-title">Compartilhar resultado</h2>
+            <div class="share-options">
+                <button id="download-btn" class="btn secondary-btn">
+                    <i class="fas fa-download" aria-hidden="true"></i> Download
+                </button>
+                <button id="copy-btn" class="btn secondary-btn">
+                    <i class="fas fa-copy" aria-hidden="true"></i> Copiar texto
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="./js/script.js"></script>
+    <!-- Script para atualizar o ano do copyright -->
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
