@@ -6,7 +6,7 @@
 
   <!-- Página Inicial -->
   <url>
-    <loc>https://clicksorte.com.br/</loc>
+    <loc>https://clicksorte.vercel.app/</loc>
     <lastmod>2023-12-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
@@ -14,7 +14,7 @@
   
   <!-- Página Sobre -->
   <url>
-    <loc>https://clicksorte.com.br/pages/about.html</loc>
+    <loc>https://clicksorte.vercel.app/pages/about.html</loc>
     <lastmod>2023-12-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
@@ -22,7 +22,7 @@
   
   <!-- Página de Termos de Uso -->
   <url>
-    <loc>https://clicksorte.com.br/pages/termos.html</loc>
+    <loc>https://clicksorte.vercel.app/pages/termos.html</loc>
     <lastmod>2023-12-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
@@ -30,7 +30,7 @@
   
   <!-- Página de Política de Privacidade -->
   <url>
-    <loc>https://clicksorte.com.br/pages/privacidade.html</loc>
+    <loc>https://clicksorte.vercel.app/pages/privacidade.html</loc>
     <lastmod>2023-12-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
